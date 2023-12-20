@@ -1,6 +1,8 @@
 node_modules
+!uploads
 *.mp4
 *.jpg
 *.png
 .env
 logs
+!uploads
