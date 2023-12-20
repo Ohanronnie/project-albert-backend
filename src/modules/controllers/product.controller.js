@@ -18,7 +18,6 @@ export const addWatermark = catchAsync(async (req, res) => {
   if (!existSync(videoPath) || !existSync(watermarkPath))
     throw new AppError("Error occured somewhere, reupload your file.", 302);
   const output = join(`uploads/${Date.now().toString(32)}.mp4`);
-  writeFileSync(output,"");
   const addOverlay = addVideoOverlay(
     type,
     videoPath,
