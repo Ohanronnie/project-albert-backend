@@ -19,7 +19,7 @@ import path from "path";
  * Default app configurations
  */
 const app = express();
-const port = ENVIRONMENT.APP.PORT;
+const port = process.env.PORT || ENVIRONMENT.APP.PORT;
 const appName = ENVIRONMENT.APP.NAME;
 
 /**
