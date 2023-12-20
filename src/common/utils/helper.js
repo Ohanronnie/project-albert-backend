@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import AppError from "./appError.js";
 import multer from "multer";
 import { unlinkSync, existsSync as existSync, createReadStream } from "fs";
+import { join } from "path";
 /**
  * Generates a random string of the specified length.
  *
@@ -81,7 +82,7 @@ export const guard = catchAsync(async (req, res, next) => {
 });
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, join(process.cwd(),"uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
