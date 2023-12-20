@@ -35,10 +35,10 @@ export function addVideoOverlay(type, video, watermark, output, res) {
     switch (type) {
       case "image":
 //        argument = `-i ${video} -i ${watermark} -filter_complex overlay=10:10 -c:v libx264 -preset ultrafast -c:a aac -strict experimental -f mp4 -movflags frag_keyframe+empty_moov ${output}`;
-        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [watermark]; [0:v][watermark]overlay=10:10" -c:a copy ${output}`
+        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [watermark]; [0:v][watermark]overlay=10:10" -y -c:a copy ${output}`
         break;
       case "video":
-        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [overlay]; [0:v][overlay]overlay=10:10[outv]" -map "[outv]" -map 1:a -c:v libx264 -c:a aac -strict experimental -movflags +faststart  -f mp4 ${output}`;
+        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [overlay]; [0:v][overlay]overlay=10:10[outv]" -map "[outv]" -map 1:a -c:v libx264 -c:a aac -strict experimental -movflags +faststart -y  -f mp4 ${output}`;
         break;
       case "text":
         command = ``;
