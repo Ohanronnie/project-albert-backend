@@ -3,7 +3,7 @@ import { catchAsync } from "../../common/utils/errorHandler.js";
 import { User } from "../schemas/user.schema.js";
 import Joi from "joi";
 import { addVideoOverlay } from "../../common/utils/helper.js";
-import { unlinkSync, existsSync as existSync, createReadStream } from "fs";
+import { unlinkSync, existsSync as existSync, createReadStream, writeFileSync } from "fs";
 import { join } from "path";
 const resolvePath = (path) => join(process.cwd(), path);
 export const addWatermark = catchAsync(async (req, res) => {
@@ -18,6 +18,7 @@ export const addWatermark = catchAsync(async (req, res) => {
   if (!existSync(videoPath) || !existSync(watermarkPath))
     throw new AppError("Error occured somewhere, reupload your file.", 302);
   const output = join(process.cwd(),`uploads/${Date.now().toString(32)}.mp4`);
+  fs.writeFileSync(output,"");
   const addOverlay = addVideoOverlay(
     type,
     videoPath,
