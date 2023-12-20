@@ -82,7 +82,7 @@ export const guard = catchAsync(async (req, res, next) => {
 });
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, join(process.cwd(),"uploads/"));
+    cb(null, join("uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
