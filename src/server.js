@@ -28,7 +28,12 @@ const appName = ENVIRONMENT.APP.NAME;
 app.use(helmet());
 app.use(
   cors({
-    origin: ["http://localhost:5173","http://localhost:5173/","*", process.env.FRONTEND_URL],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5173/",
+      "*",
+      process.env.FRONTEND_URL,
+    ],
     method: ["GET", "POST"],
     credentials: true,
   }),
@@ -64,7 +69,7 @@ app.use((req, res, next) => {
   }
 })*/
 
-app.get('/video/:path', (req, res) => {
+app.get("/video/:path", (req, res) => {
   const videoPath = path.join(process.cwd(), "uploads", req.params.path); // Update with your video file path
 
   const stat = fs.statSync(videoPath);
@@ -72,25 +77,25 @@ app.get('/video/:path', (req, res) => {
   const range = req.headers.range;
 
   if (range) {
-    const parts = range.replace(/bytes=/, '').split('-');
+    const parts = range.replace(/bytes=/, "").split("-");
     const start = parseInt(parts[0], 10);
     const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
 
-    const chunksize = (end - start) + 1;
+    const chunksize = end - start + 1;
     const file = fs.createReadStream(videoPath, { start, end });
     const head = {
-      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-      'Accept-Ranges': 'bytes',
-      'Content-Length': chunksize,
-      'Content-Type': 'video/mp4',
+      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+      "Accept-Ranges": "bytes",
+      "Content-Length": chunksize,
+      "Content-Type": "video/mp4",
     };
 
     res.writeHead(206, head);
     file.pipe(res);
   } else {
     const head = {
-      'Content-Length': fileSize,
-      'Content-Type': 'video/mp4',
+      "Content-Length": fileSize,
+      "Content-Type": "video/mp4",
     };
     res.writeHead(200, head);
     fs.createReadStream(videoPath).pipe(res);

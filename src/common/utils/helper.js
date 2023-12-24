@@ -5,8 +5,14 @@ import { User } from "../../modules/schemas/user.schema.js";
 import jwt from "jsonwebtoken";
 import AppError from "./appError.js";
 import multer from "multer";
-import { unlinkSync, existsSync as existSync, createReadStream } from "fs";
+import {
+  writeFileSync,
+  unlinkSync,
+  existsSync as existSync,
+  createReadStream,
+} from "fs";
 import { join } from "path";
+import ffmpeg from "fluent-ffmpeg";
 /**
  * Generates a random string of the specified length.
  *
@@ -15,6 +21,57 @@ import { join } from "path";
  */
 export function generateRandomString(length) {
   return randomBytes(length).toString("hex");
+}
+
+function convertVideo(video, watermark, output) {
+  return new Promise((resolve, reject) => {
+    const firstVideo = video;
+    const secondVideo = watermark;
+    const outputVideo = output;
+    const command = ffmpeg()
+      .input(video)
+      .input(watermark)
+      .complexFilter([
+        "[1:v]scale=iw/4:ih/4 [overlay]; [0:v][overlay]overlay=10:10[outv]",
+        "[1:a]anull[aud]",
+      ])
+      .map("[outv]")
+      .map("[aud]")
+      .outputOption("-preset ultrafast")
+      .output(output)
+      .videoCodec("libx264")
+      .audioCodec("aac");
+    command
+      .on("end", () => {
+        resolve(true);
+      })
+      .on("error", (err) => {
+        reject(err);
+      })
+      .run();
+  });
+}
+
+function convertImage(video, watermark, output) {
+  return new Promise((resolve, reject) => {
+    const inputVideo = video;
+    const outputVideo = output;
+
+    ffmpeg(inputVideo)
+      .input(watermark)
+      .complexFilter(
+        "[1:v]scale=100:100[watermark];[0:v][watermark]overlay=5:5",
+      )
+      .audioCodec("copy")
+      .output(outputVideo)
+      .on("end", () => {
+        resolve(true);
+      })
+      .on("error", (err) => {
+        reject(err);
+      })
+      .run();
+  });
 }
 /**
  *
@@ -28,39 +85,22 @@ export function generateRandomString(length) {
  * @return {boolean}
  *
  **/
+
 export function addVideoOverlay(type, video, watermark, output, res) {
   return new Promise((resolve, reject) => {
-    let command = "ffmpeg";
-    let argument = [];
     switch (type) {
       case "image":
-//        argument = `-i ${video} -i ${watermark} -filter_complex overlay=10:10 -c:v libx264 -preset ultrafast -c:a aac -strict experimental -f mp4 -movflags frag_keyframe+empty_moov ${output}`;
-        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [watermark]; [0:v][watermark]overlay=10:10" -y -c:a copy ${output}`
+        convertImage(video, watermark, output).then(resolve).catch(reject);
         break;
       case "video":
-        argument = `-i ${video} -i ${watermark} -filter_complex "[1:v]scale=iw/4:ih/4 [overlay]; [0:v][overlay]overlay=10:10[outv]" -map "[outv]" -map 1:a -c:v libx264 -c:a aac -strict experimental -movflags +faststart -y  -f mp4 ${output}`;
+        convertVideo(video, watermark, output).then(resolve).catch(reject);
         break;
       case "text":
         command = ``;
         break;
       default:
-        return false;
+        reject(false);
     }
-    let spawned = execSync(`${command} ${argument}`, { shell: true });
-    resolve(true);
-    /*    let hasRun = false;
-    /*  spawned.stdout.on("data", (data) => {
-      process.stdout.write(data.toString());
-      if(!hasRun && existSync(output)){
-        createReadStream(output).pipe(res);
-        hasRun = true;
-      }
-    });
-    spawned.stdout.pipe(res);
-    spawned.on("close", () => resolve(true));
-    spawned.stderr.on("data", (err) => {
-      console.error(err.toString());
-    });*/
   });
 }
 export const guard = catchAsync(async (req, res, next) => {
