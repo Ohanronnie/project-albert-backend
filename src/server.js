@@ -32,6 +32,8 @@ app.use(
       "http://localhost:5173",
       "http://localhost:5173/",
       "*",
+      "https://itoolsai.com",
+      "https://itoolsai.com/",
       process.env.FRONTEND_URL,
     ],
     method: ["GET", "POST"],
