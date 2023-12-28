@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema(
       type: Date,
       required: false,
     },
+    paymentReference: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true },
 );

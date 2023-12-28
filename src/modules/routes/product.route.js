@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addWatermark } from "../controllers/product.controller.js";
-import { upload } from "../../common/utils/helper.js";
+import { upload, paymentGuard, guard } from "../../common/utils/helper.js";
 const router = Router();
 const fields = [
   {
@@ -13,6 +13,12 @@ const fields = [
   },
 ];
 export const productRoutes = () => {
-  router.post("/watermark", upload.fields(fields), addWatermark);
+  router.post(
+    "/watermark",
+    guard,
+    paymentGuard,
+    upload.fields(fields),
+    addWatermark,
+  );
   return router;
 };

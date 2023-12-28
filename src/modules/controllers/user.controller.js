@@ -56,16 +56,23 @@ export const getUser = catchAsync(async (req, res) => {
   const createdAt = new Date(user.createdAt);
   createdAt.setDate(createdAt.getDate() + 7);
   let daysRemain = createdAt.getDate() - nowDate.getDate();
+  const payment_date = new Date(user.paymentExpiresIn);
+  const needPayment = nowDate.getDate() > payment_date.getDate();
   let response = {
     success: true,
   };
-  if (daysRemain < 1) {
-    response = { ...response, paymentRequired: true, freeTrialDaysRemain: 0 };
+  if(user.paymentExpiresIn && needPayment){
+    response = { ...response, payment_required: true, free_trial_days: 0, payment_expired: payment_date };
+  } else if(user.paymentExpiresIn && !needPayment){
+  response = { ...response, payment_required: false, free_trial_days: 0, payment_expires_in: user.paymentExpiresIn };
+  }
+  else if (daysRemain < 1) {
+    response = { ...response, payment_required: true, free_trial_days: 0 };
   } else {
     response = {
       ...response,
-      paymentRequired: false,
-      freeTrialDaysRemain: daysRemain,
+      payment_required: false,
+      free_trial_days: daysRemain,
     };
   }
   return res.status(200).json({

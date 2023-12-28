@@ -13,6 +13,7 @@ import {
 } from "fs";
 import { join } from "path";
 import ffmpeg from "fluent-ffmpeg";
+import _axios from "axios";
 /**
  * Generates a random string of the specified length.
  *
@@ -103,6 +104,7 @@ export function addVideoOverlay(type, video, watermark, output, res) {
     }
   });
 }
+
 export const guard = catchAsync(async (req, res, next) => {
   const token =
     req.headers["X-AUTH-TOKEN"] ||
@@ -120,6 +122,37 @@ export const guard = catchAsync(async (req, res, next) => {
     throw new AppError("Session Expired! Relogin", 302);
   }
 });
+export const paymentGuard = catchAsync(async (req, res, next) => {
+  const user = await User.findOne({ _id: req.userId });
+  const { hasPaid, paymentExpiresIn, createdAt } = user;
+
+  const date = new Date();
+  if (new Date(createdAt).getDate() + 7 > date.getDate()) {
+    /*   if (!hasPaid) {
+      return res.status(200).json({
+        has_paid: false,
+        free_trial_ends: (new Date(createdAt).getDate() + 7) - date.getDate(),
+        payment_required: "optional"
+      })
+    } else {
+      return res.status(200).json({
+        has_paid: true,
+        payment_ends: paymentExpiresIn,
+        payment_required: false
+      })
+    }*/
+    next();
+  } else if (new Date(paymentExpiresIn).getTime() > new Date().getTime()) {
+    /*   return res.status(200).json({
+      has_paid: true,
+      payment_ends: paymentExpiresIn,
+      payment_required: false
+    })*/
+    next();
+  } else {
+    throw new AppError("Free trial over. Pay to use this service.");
+  }
+});
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, join("uploads/"));
@@ -129,13 +162,24 @@ const storage = multer.diskStorage({
   },
 });
 const fileFilter = (req, file, cb) => {
-  const fileRegex = /image|video|application|octet-stream/;
-  console.log(file.mimetype);
+  const fileRegex = /image|video|application/;
   if (!file.mimetype.match(fileRegex)) {
     return cb(new AppError("Only image and video files are supported."), false);
   } else {
     cb(null, true);
   }
 };
-// Create the multer instance
 export const upload = multer({ storage, fileFilter });
+
+_axios.interceptors.request.use(
+  async (config) => {
+    config = { ...config, maxBodyLength: Infinity };
+    config.headers = {
+      ...config.headers,
+      "Content-Type": "application/json",
+    };
+    return config;
+  },
+  (err) => Promise.reject(err),
+);
+export const axios = _axios;
