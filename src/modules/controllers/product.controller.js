@@ -14,11 +14,13 @@ const resolvePath = (path) => join(process.cwd(), path);
 export const addWatermark = catchAsync(async (req, res) => {
   if (!req.files || !req.files.video || !req.files.watermark)
     throw new AppError("Upload a file to continue.", 302);
-  const { video, watermark } = req.files;
+  const { video, watermark, insertVideo } = req.files;
+  const insertTime = req.body.insertTime;
   const type = req.body.type || "image";
-  const [videoPath, watermarkPath] = [
+  const [videoPath, watermarkPath, insertPath] = [
     resolvePath(video[0].path),
     resolvePath(watermark[0].path),
+    insertVideo?.[0]?.path &&  resolvePath(insertVideo?.[0]?.path),
   ];
   if (!existSync(videoPath) || !existSync(watermarkPath))
     throw new AppError("Error occured somewhere, reupload your file.", 302);
@@ -28,6 +30,8 @@ export const addWatermark = catchAsync(async (req, res) => {
     videoPath,
     watermarkPath,
     output,
+    insertPath,
+    insertTime,
     res,
   )
     .catch((err) => {
@@ -41,7 +45,8 @@ export const addWatermark = catchAsync(async (req, res) => {
       unlinkSync(watermarkPath);
       res.status(200).json({
         success: true,
-        path: output.split("/").pop(),
+        path: output.split(new RegExp(/\/|\\/)).pop(),
       });
+
     });
 });

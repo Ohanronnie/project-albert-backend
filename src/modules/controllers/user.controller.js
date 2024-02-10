@@ -52,7 +52,41 @@ export const getUser = catchAsync(async (req, res) => {
   const userId = req.userId;
   const user = await User.findOne({ _id: userId });
   if (!user) throw new AppError("Error occured somewhere, try relogin");
-  const nowDate = new Date();
+  const todayDate = new Date();
+  const accountCreatedAt = new Date(user.createdAt);
+  // check if the user has paid/subscribed 
+
+  if(user.hasPaid){
+    if(user.paymentExpiresIn < todayDate) {
+      return res.status(200).json({
+        success: true,
+        paymentRequired: true,
+        paymentExpiredOn: user.paymentExpiresIn,
+      })
+    } else {
+      return res.status(200).json({
+        success: true,
+        paymentRequired: false,
+        paymentExpiresOn: user.paymentExpiresIn,
+      })
+    }
+  } else {
+    accountCreatedAt.setDate(accountCreatedAt.getDate() + 7);
+    if(accountCreatedAt < todayDate){
+      return res.status(200).json({
+        success: true,
+        paymentRequired: true,
+        freeTrialExpiredOn: accountCreatedAt
+      })
+    } else {
+      return res.status(200).json({
+       success: true,
+       paymentRequired: false,
+       freeTrialExpiredOn: accountCreatedAt
+    })
+    } 
+  }
+  /*const nowDate = new Date();
   const createdAt = new Date(user.createdAt);
   createdAt.setDate(createdAt.getDate() + 7);
   let daysRemain = createdAt.getDate() - nowDate.getDate();
@@ -74,9 +108,11 @@ export const getUser = catchAsync(async (req, res) => {
       payment_required: false,
       free_trial_days: daysRemain,
     };
-  }
-  return res.status(200).json({
+  }*/
+  
+/*  console.log(response)
+    return res.status(200).json({
     ...response,
     success: true,
-  });
+  });*/
 });

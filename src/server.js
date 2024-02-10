@@ -45,7 +45,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.disable("x-powered-by");
 app.use(compression());
 app.use((req, res, next) => {
-  console.log(Date.now());
   next();
 });
 
@@ -61,18 +60,11 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 });
-//app.use('/video', express.static('uploads/'))
-/**
- * Initialize routes
- */
-/*app.get("/video/:path", (req, res) => {
-  if(fs.existsSync(req.params.path)){
-    fs.createReadStream("uploads/"+req.params.path).pipe(res)
-  }
-})*/
 
-app.get("/video/:path", (req, res) => {
-  const videoPath = path.join(process.cwd(), "uploads", req.params.path); // Update with your video file path
+
+app.get("/video", (req, res) => {
+  try {
+  const videoPath = path.join(process.cwd(), "uploads", req.query.path || 'testfile'); // Update with your video file path
 
   const stat = fs.statSync(videoPath);
   const fileSize = stat.size;
@@ -90,6 +82,7 @@ app.get("/video/:path", (req, res) => {
       "Accept-Ranges": "bytes",
       "Content-Length": chunksize,
       "Content-Type": "video/mp4",
+      'Cross-Origin-Resource-Policy': 'cross-origin'
     };
 
     res.writeHead(206, head);
@@ -97,10 +90,16 @@ app.get("/video/:path", (req, res) => {
   } else {
     const head = {
       "Content-Length": fileSize,
-      "Content-Type": "video/mp4",
+      "Content-Type": "application/octet-stream",
+      'Content-Disposition': 'attachment',
+      'Cross-Origin-Resource-Policy': 'cross-origin'
     };
     res.writeHead(200, head);
+ //   res.download(videoPath)
     fs.createReadStream(videoPath).pipe(res);
+  }
+  } catch(err){
+    console.error(err)
   }
 });
 app.use("/", setRoutes());

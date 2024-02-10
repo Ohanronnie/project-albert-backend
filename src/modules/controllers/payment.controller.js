@@ -5,7 +5,6 @@ import { axios } from "../../common/utils/helper.js";
 import crypto from "crypto";
 export const initiatePayment = catchAsync(async (req, res) => {
   const user = await User.findOne({ _id: req.userId });
-
   if (!user) throw new AppError("Unauthorized", 302);
   const email = user.email;
   const options = {

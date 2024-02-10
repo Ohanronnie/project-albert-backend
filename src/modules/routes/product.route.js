@@ -11,6 +11,10 @@ const fields = [
     name: "watermark",
     maxCount: 1,
   },
+  {
+    name: 'insertVideo',
+    maxCount: 1
+  }
 ];
 export const productRoutes = () => {
   router.post(
