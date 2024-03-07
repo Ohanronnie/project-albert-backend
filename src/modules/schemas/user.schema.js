@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    savedClips: [],
+    editedVideos: []
   },
   { timestamps: true },
 );

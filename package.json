@@ -1,8 +1,8 @@
 {
-  "name": "startease-expressjs-project",
+  "name": "itoolsai",
   "version": "1.0.0",
-  "description": "Expressjs project generated using startease CLI tool",
-  "main": "index.js",
+  "description": "Itoolsai backend project",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js"
@@ -13,6 +13,7 @@
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "axios": "^1.6.3",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.0.1",
     "compression": "^1.7.4",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",
