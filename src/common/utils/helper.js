@@ -88,9 +88,9 @@ function placeWatermark(video, watermark, output) {
       .output(output)
       .videoCodec("libx264")
       .audioCodec("aac");
-    
+
     command.on("end", () => {
-     resolve(true)
+      resolve(true);
     });
     command.on("error", (error) => {
       reject(new Error(error));
@@ -132,13 +132,13 @@ function insertVideo(insertPath, insertTime, video, output) {
       unlinkSync(temp2);
       unlinkSync(temp3);
       unlinkSync(temp4);
-      unlinkSync(insertPath)
+      unlinkSync(insertPath);
       unlinkSync(video);
       resolve(true);
     } catch (error) {
       console.error(error);
       unlinkSync(temp2);
- unlinkSync(insertPath);
+      unlinkSync(insertPath);
       unlinkSync(temp3);
       unlinkSync(temp4);
       unlinkSync(video);
@@ -154,7 +154,7 @@ function placeImage(video, watermark, output) {
     ffmpeg(inputVideo)
       .input(watermark)
       .complexFilter(
-        "[1:v]scale=100:100[watermark];[0:v][watermark]overlay=5:5"
+        "[1:v]scale=100:100[watermark];[0:v][watermark]overlay=5:5",
       )
       .audioCodec("copy")
       .output(outputVideo)
@@ -167,14 +167,21 @@ function placeImage(video, watermark, output) {
       .run();
   });
 }
-function convertVideo(video, watermark, insertPath, insertTime, username, output) {
+function convertVideo(
+  video,
+  watermark,
+  insertPath,
+  insertTime,
+  username,
+  output,
+) {
   return new Promise(async (resolve, reject) => {
     const temp1 = Date.now().toString(16) + ".mp4";
     const temp2 = randomBytes(13).toString("hex") + ".mp4";
     try {
       const _watermark = await placeWatermark(video, watermark, temp1);
       await insertVideo(insertPath, insertTime, temp1, temp2);
-      await insertText(temp2, username, output)
+      await insertText(temp2, username, output);
       resolve(true);
     } catch (error) {
       console.error(error);
@@ -183,16 +190,23 @@ function convertVideo(video, watermark, insertPath, insertTime, username, output
   });
 }
 
-function convertImage(video, watermark, insertPath, insertTime, username, output) {
+function convertImage(
+  video,
+  watermark,
+  insertPath,
+  insertTime,
+  username,
+  output,
+) {
   return new Promise(async (resolve, reject) => {
     const inputVideo = video;
     const outputVideo = output;
     const temp1 = Date.now().toString(19) + ".mp4";
-    const temp2 = randomBytes(13).toString('hex') + '.mp4';
-     try {
+    const temp2 = randomBytes(13).toString("hex") + ".mp4";
+    try {
       await placeImage(video, watermark, temp1);
-       await insertVideo(insertPath, insertTime, temp1, temp2);
-       await insertText(temp2, username, output);
+      await insertVideo(insertPath, insertTime, temp1, temp2);
+      await insertText(temp2, username, output);
       resolve(output);
     } catch (error) {
       reject(error);
@@ -201,33 +215,32 @@ function convertImage(video, watermark, insertPath, insertTime, username, output
 }
 function insertText(video, text, output) {
   return new Promise((resolve, reject) => {
-     ffmpeg(video)
-       .complexFilter([
-         {
-           filter: "drawtext",
-           options: {
-             font: "arial",
-             text,
-             fontsize: 24,
-             x: "(w/2)-text_w",
-             y: "(h/2)-th",
-             fontcolor: "white",
-             box: 1,
-             boxcolor: "black@0.2",
-             boxborderw: 5,
-           },
-         },
-       ])
-       .output(output)
-       .on("end", () => {
-         resolve(true);
-       })
-       .on("error", (err) => {
-         reject(new Error(err));
-        
-       })
-       .run();
-  })
+    ffmpeg(video)
+      .complexFilter([
+        {
+          filter: "drawtext",
+          options: {
+            font: "arial",
+            text,
+            fontsize: 24,
+            x: "(w/2)-text_w",
+            y: "(h/2)-th",
+            fontcolor: "white",
+            box: 1,
+            boxcolor: "black@0.2",
+            boxborderw: 5,
+          },
+        },
+      ])
+      .output(output)
+      .on("end", () => {
+        resolve(true);
+      })
+      .on("error", (err) => {
+        reject(new Error(err));
+      })
+      .run();
+  });
 }
 /**
  *
@@ -252,7 +265,7 @@ export function addVideoOverlay(
   insertPath,
   insertTime,
   username,
-  res
+  res,
 ) {
   return new Promise((resolve, reject) => {
     switch (type) {
@@ -347,6 +360,6 @@ _axios.interceptors.request.use(
     };
     return config;
   },
-  (err) => Promise.reject(err)
+  (err) => Promise.reject(err),
 );
 export const axios = _axios;

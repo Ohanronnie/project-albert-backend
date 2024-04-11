@@ -1,0 +1,1839 @@
+{
+  "user": {
+    "id": 2892,
+    "email": "titiloyepaul68@gmail.com",
+    "username": "ohanronnie",
+    "FullName": "Titiloye Paul",
+    "pin": "12345",
+    "Address": "Meiran Rd",
+    "Phone": "07089314662",
+    "user_type": "Smart Earner",
+    "email_verify": false,
+    "verify": false,
+    "password": "pbkdf2_sha256$216000$TSqVB2l4sBX3$iYrOb+eyO2MdvbQTop9qlsi2Q0uEDX56NsjTySnR4dQ=",
+    "Account_Balance": 115.89999999999986,
+    "wallet_balance": "116",
+    "bonus_balance": "0",
+    "referer_username": "",
+    "bank_accounts": {
+      "accounts": [
+        {
+          "bankCode": "232",
+          "bankName": "Sterling bank",
+          "accountNumber": "9290503249",
+          "accountName": "oha"
+        },
+        {
+          "bankCode": "035",
+          "bankName": "Wema bank",
+          "accountNumber": "9571275345",
+          "accountName": "oha"
+        },
+        {
+          "bankCode": "50515",
+          "bankName": "Moniepoint Microfinance Bank",
+          "accountNumber": "6477298613",
+          "accountName": "oha"
+        }
+      ]
+    },
+    "reservedaccountNumber": "9290503249",
+    "reservedbankName": "Sterling bank"
+  },
+  "notification": {
+    "message": "Monnify Payment successful you account has been credited with sum of #495.0"
+  },
+  "percentage": {
+    "MTN": {
+      "percent": 80,
+      "phone": "090373462xx"
+    },
+    "GLO": {
+      "percent": 82,
+      "phone": "08056xxxx"
+    },
+    "9MOBILE": {
+      "percent": 70,
+      "phone": "081749xxxxx"
+    },
+    "AIRTEL": {
+      "percent": 79,
+      "phone": "0xxxxxxxxxx"
+    }
+  },
+  "topuppercentage": {
+    "MTN": {
+      "VTU": 97,
+      "Share and Sell": 97
+    },
+    "GLO": {
+      "VTU": 96,
+      "Share and Sell": 95
+    },
+    "9MOBILE": {
+      "VTU": 97,
+      "Share and Sell": 97
+    },
+    "AIRTEL": {
+      "VTU": 97,
+      "Share and Sell": 95
+    }
+  },
+  "Admin_number": [
+    {
+      "network": "MTN",
+      "phone_number": "090373462xx"
+    },
+    {
+      "network": "AIRTEL",
+      "phone_number": "0xxxxxxxxxx"
+    },
+    {
+      "network": "9MOBILE",
+      "phone_number": "081749xxxxx"
+    },
+    {
+      "network": "GLO",
+      "phone_number": "08056xxxx"
+    }
+  ],
+  "Exam": {
+    "WAEC": {
+      "amount": 3380.0
+    },
+    "NECO": {
+      "amount": 1130.0
+    },
+    "NABTEB": {
+      "amount": 1800.0
+    }
+  },
+  "banks": [],
+  "banners": [],
+  "Dataplans": {
+    "MTN_PLAN": {
+      "CORPORATE": [
+        {
+          "id": 223,
+          "dataplan_id": "223",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "500.0MB",
+          "plan_amount": "140"
+        },
+        {
+          "id": 211,
+          "dataplan_id": "211",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "1.024GB",
+          "plan_amount": "262"
+        },
+        {
+          "id": 212,
+          "dataplan_id": "212",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "2.048GB",
+          "plan_amount": "524"
+        },
+        {
+          "id": 213,
+          "dataplan_id": "213",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "3.072GB",
+          "plan_amount": "786"
+        },
+        {
+          "id": 214,
+          "dataplan_id": "214",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "5.12GB",
+          "plan_amount": "1310"
+        },
+        {
+          "id": 216,
+          "dataplan_id": "216",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "10.24GB",
+          "plan_amount": "2620"
+        },
+        {
+          "id": 231,
+          "dataplan_id": "231",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "15.0GB",
+          "plan_amount": "3930"
+        },
+        {
+          "id": 232,
+          "dataplan_id": "232",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "20.0GB",
+          "plan_amount": "5240"
+        },
+        {
+          "id": 233,
+          "dataplan_id": "233",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "40.0GB",
+          "plan_amount": "10480"
+        },
+        {
+          "id": 234,
+          "dataplan_id": "234",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "75.0GB",
+          "plan_amount": "19650"
+        }
+      ],
+      "SME": [
+        {
+          "id": 6,
+          "dataplan_id": "6",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "500.0MB",
+          "plan_amount": "126"
+        },
+        {
+          "id": 7,
+          "dataplan_id": "7",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "1.0GB",
+          "plan_amount": "253"
+        },
+        {
+          "id": 8,
+          "dataplan_id": "8",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "2.0GB",
+          "plan_amount": "506"
+        },
+        {
+          "id": 44,
+          "dataplan_id": "44",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "3.0GB",
+          "plan_amount": "759"
+        },
+        {
+          "id": 11,
+          "dataplan_id": "11",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "5.0GB",
+          "plan_amount": "1265"
+        },
+        {
+          "id": 208,
+          "dataplan_id": "208",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "10.0GB",
+          "plan_amount": "2530"
+        }
+      ],
+      "GIFTING": [
+        {
+          "id": 259,
+          "dataplan_id": "259",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "2.0GB",
+          "plan_amount": "1164"
+        },
+        {
+          "id": 260,
+          "dataplan_id": "260",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "1.5GB",
+          "plan_amount": "1164"
+        },
+        {
+          "id": 258,
+          "dataplan_id": "258",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "7 DAYS",
+          "plan": "5.0GB",
+          "plan_amount": "1455"
+        },
+        {
+          "id": 265,
+          "dataplan_id": "265",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "3.0GB",
+          "plan_amount": "1552"
+        },
+        {
+          "id": 261,
+          "dataplan_id": "261",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "4.0GB",
+          "plan_amount": "1940"
+        },
+        {
+          "id": 268,
+          "dataplan_id": "268",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "10.0GB",
+          "plan_amount": "3395"
+        },
+        {
+          "id": 262,
+          "dataplan_id": "262",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "12.0GB",
+          "plan_amount": "3880"
+        },
+        {
+          "id": 263,
+          "dataplan_id": "263",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "20.0GB",
+          "plan_amount": "5335"
+        },
+        {
+          "id": 266,
+          "dataplan_id": "266",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "25.0GB",
+          "plan_amount": "6305"
+        },
+        {
+          "id": 264,
+          "dataplan_id": "264",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "40.0GB",
+          "plan_amount": "10670"
+        },
+        {
+          "id": 269,
+          "dataplan_id": "269",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "75.0GB",
+          "plan_amount": "15520"
+        },
+        {
+          "id": 270,
+          "dataplan_id": "270",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "120.0GB",
+          "plan_amount": "21340"
+        },
+        {
+          "id": 271,
+          "dataplan_id": "271",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "200.0GB",
+          "plan_amount": "29100"
+        },
+        {
+          "id": 273,
+          "dataplan_id": "273",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "2 MONTHS",
+          "plan": "160.0GB",
+          "plan_amount": "29100"
+        },
+        {
+          "id": 274,
+          "dataplan_id": "274",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "3 Months",
+          "plan": "400.0GB",
+          "plan_amount": "48500"
+        },
+        {
+          "id": 275,
+          "dataplan_id": "275",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "3 Months",
+          "plan": "600.0GB",
+          "plan_amount": "72750"
+        },
+        {
+          "id": 276,
+          "dataplan_id": "276",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "6 Months",
+          "plan": "800.0GB",
+          "plan_amount": "87300"
+        },
+        {
+          "id": 277,
+          "dataplan_id": "277",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "1.0TB",
+          "plan_amount": "97000"
+        },
+        {
+          "id": 278,
+          "dataplan_id": "278",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "2.5TB",
+          "plan_amount": "242500"
+        },
+        {
+          "id": 279,
+          "dataplan_id": "279",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "4.5TB",
+          "plan_amount": "436500"
+        },
+        {
+          "id": 280,
+          "dataplan_id": "280",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "SME DATA 3 Months",
+          "plan": "25.0TB",
+          "plan_amount": "5596900"
+        }
+      ],
+      "ALL": [
+        {
+          "id": 6,
+          "dataplan_id": "6",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "500.0MB",
+          "plan_amount": "126"
+        },
+        {
+          "id": 223,
+          "dataplan_id": "223",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "500.0MB",
+          "plan_amount": "140"
+        },
+        {
+          "id": 7,
+          "dataplan_id": "7",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "1.0GB",
+          "plan_amount": "253"
+        },
+        {
+          "id": 211,
+          "dataplan_id": "211",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "1.024GB",
+          "plan_amount": "262"
+        },
+        {
+          "id": 8,
+          "dataplan_id": "8",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "2.0GB",
+          "plan_amount": "506"
+        },
+        {
+          "id": 212,
+          "dataplan_id": "212",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "2.048GB",
+          "plan_amount": "524"
+        },
+        {
+          "id": 44,
+          "dataplan_id": "44",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "3.0GB",
+          "plan_amount": "759"
+        },
+        {
+          "id": 213,
+          "dataplan_id": "213",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "3.072GB",
+          "plan_amount": "786"
+        },
+        {
+          "id": 259,
+          "dataplan_id": "259",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "2.0GB",
+          "plan_amount": "1164"
+        },
+        {
+          "id": 260,
+          "dataplan_id": "260",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "1.5GB",
+          "plan_amount": "1164"
+        },
+        {
+          "id": 11,
+          "dataplan_id": "11",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "5.0GB",
+          "plan_amount": "1265"
+        },
+        {
+          "id": 214,
+          "dataplan_id": "214",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 DAYS",
+          "plan": "5.12GB",
+          "plan_amount": "1310"
+        },
+        {
+          "id": 258,
+          "dataplan_id": "258",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "7 DAYS",
+          "plan": "5.0GB",
+          "plan_amount": "1455"
+        },
+        {
+          "id": 265,
+          "dataplan_id": "265",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "3.0GB",
+          "plan_amount": "1552"
+        },
+        {
+          "id": 261,
+          "dataplan_id": "261",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "4.0GB",
+          "plan_amount": "1940"
+        },
+        {
+          "id": 208,
+          "dataplan_id": "208",
+          "network": 1,
+          "plan_type": "SME",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "10.0GB",
+          "plan_amount": "2530"
+        },
+        {
+          "id": 216,
+          "dataplan_id": "216",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "10.24GB",
+          "plan_amount": "2620"
+        },
+        {
+          "id": 268,
+          "dataplan_id": "268",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "10.0GB",
+          "plan_amount": "3395"
+        },
+        {
+          "id": 262,
+          "dataplan_id": "262",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "12.0GB",
+          "plan_amount": "3880"
+        },
+        {
+          "id": 231,
+          "dataplan_id": "231",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "15.0GB",
+          "plan_amount": "3930"
+        },
+        {
+          "id": 232,
+          "dataplan_id": "232",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "20.0GB",
+          "plan_amount": "5240"
+        },
+        {
+          "id": 263,
+          "dataplan_id": "263",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "20.0GB",
+          "plan_amount": "5335"
+        },
+        {
+          "id": 266,
+          "dataplan_id": "266",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "25.0GB",
+          "plan_amount": "6305"
+        },
+        {
+          "id": 233,
+          "dataplan_id": "233",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "40.0GB",
+          "plan_amount": "10480"
+        },
+        {
+          "id": 264,
+          "dataplan_id": "264",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "40.0GB",
+          "plan_amount": "10670"
+        },
+        {
+          "id": 269,
+          "dataplan_id": "269",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "75.0GB",
+          "plan_amount": "15520"
+        },
+        {
+          "id": 234,
+          "dataplan_id": "234",
+          "network": 1,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 days",
+          "plan": "75.0GB",
+          "plan_amount": "19650"
+        },
+        {
+          "id": 270,
+          "dataplan_id": "270",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "120.0GB",
+          "plan_amount": "21340"
+        },
+        {
+          "id": 271,
+          "dataplan_id": "271",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "30 Days",
+          "plan": "200.0GB",
+          "plan_amount": "29100"
+        },
+        {
+          "id": 273,
+          "dataplan_id": "273",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "2 MONTHS",
+          "plan": "160.0GB",
+          "plan_amount": "29100"
+        },
+        {
+          "id": 274,
+          "dataplan_id": "274",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "3 Months",
+          "plan": "400.0GB",
+          "plan_amount": "48500"
+        },
+        {
+          "id": 275,
+          "dataplan_id": "275",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "3 Months",
+          "plan": "600.0GB",
+          "plan_amount": "72750"
+        },
+        {
+          "id": 276,
+          "dataplan_id": "276",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "6 Months",
+          "plan": "800.0GB",
+          "plan_amount": "87300"
+        },
+        {
+          "id": 277,
+          "dataplan_id": "277",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "1.0TB",
+          "plan_amount": "97000"
+        },
+        {
+          "id": 278,
+          "dataplan_id": "278",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "2.5TB",
+          "plan_amount": "242500"
+        },
+        {
+          "id": 279,
+          "dataplan_id": "279",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "1 Year",
+          "plan": "4.5TB",
+          "plan_amount": "436500"
+        },
+        {
+          "id": 280,
+          "dataplan_id": "280",
+          "network": 1,
+          "plan_type": "GIFTING",
+          "plan_network": "MTN",
+          "month_validate": "SME DATA 3 Months",
+          "plan": "25.0TB",
+          "plan_amount": "5596900"
+        }
+      ]
+    },
+    "GLO_PLAN": {
+      "ALL": [
+        {
+          "id": 257,
+          "dataplan_id": "257",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "Night/1Day",
+          "plan": "250.0MB",
+          "plan_amount": "23"
+        },
+        {
+          "id": 306,
+          "dataplan_id": "306",
+          "network": 2,
+          "plan_type": "GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "Night/1Day",
+          "plan": "500.0MB",
+          "plan_amount": "47"
+        },
+        {
+          "id": 299,
+          "dataplan_id": "299",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "14 days",
+          "plan": "200.0MB",
+          "plan_amount": "85"
+        },
+        {
+          "id": 283,
+          "dataplan_id": "283",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "Night/1Day",
+          "plan": "1.0GB",
+          "plan_amount": "95"
+        },
+        {
+          "id": 298,
+          "dataplan_id": "298",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "500.0MB",
+          "plan_amount": "150"
+        },
+        {
+          "id": 293,
+          "dataplan_id": "293",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "1.0GB",
+          "plan_amount": "227"
+        },
+        {
+          "id": 294,
+          "dataplan_id": "294",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "2.0GB",
+          "plan_amount": "454"
+        },
+        {
+          "id": 194,
+          "dataplan_id": "194",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "14 days (800MB +2gb Night)",
+          "plan": "1.8GB",
+          "plan_amount": "465"
+        },
+        {
+          "id": 295,
+          "dataplan_id": "295",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "3.0GB",
+          "plan_amount": "681"
+        },
+        {
+          "id": 195,
+          "dataplan_id": "195",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (1.9GB +2gb Night)",
+          "plan": "3.9GB",
+          "plan_amount": "930"
+        },
+        {
+          "id": 296,
+          "dataplan_id": "296",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "5.0GB",
+          "plan_amount": "1135"
+        },
+        {
+          "id": 284,
+          "dataplan_id": "284",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "7 DAYS",
+          "plan": "7.0GB",
+          "plan_amount": "1200"
+        },
+        {
+          "id": 196,
+          "dataplan_id": "196",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (3.5GB +4gb Night)",
+          "plan": "7.5GB",
+          "plan_amount": "1395"
+        },
+        {
+          "id": 197,
+          "dataplan_id": "197",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (5.2+4gb Night)",
+          "plan": "9.2GB",
+          "plan_amount": "1860"
+        },
+        {
+          "id": 297,
+          "dataplan_id": "297",
+          "network": 2,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "GLO",
+          "month_validate": "30 DAYS",
+          "plan": "10.0GB",
+          "plan_amount": "2270"
+        },
+        {
+          "id": 198,
+          "dataplan_id": "198",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (6.8+4gb Night)",
+          "plan": "10.8GB",
+          "plan_amount": "2325"
+        },
+        {
+          "id": 199,
+          "dataplan_id": "199",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (10.GB +4gb Night)",
+          "plan": "14.0GB",
+          "plan_amount": "2790"
+        },
+        {
+          "id": 200,
+          "dataplan_id": "200",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (14GB +4gb Night)",
+          "plan": "18.0GB",
+          "plan_amount": "3720"
+        },
+        {
+          "id": 201,
+          "dataplan_id": "201",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (20GB +4gb Night)",
+          "plan": "24.0GB",
+          "plan_amount": "4650"
+        },
+        {
+          "id": 202,
+          "dataplan_id": "202",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (27.5 +2gb Night)",
+          "plan": "29.5GB",
+          "plan_amount": "7440"
+        },
+        {
+          "id": 203,
+          "dataplan_id": "203",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (46.0 +4gb Night)",
+          "plan": "50.0GB",
+          "plan_amount": "9300"
+        },
+        {
+          "id": 204,
+          "dataplan_id": "204",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (86.0 +7gb Night)",
+          "plan": "93.0GB",
+          "plan_amount": "13950"
+        },
+        {
+          "id": 205,
+          "dataplan_id": "205",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (109.0 +10gb Night)",
+          "plan": "119.0GB",
+          "plan_amount": "16740"
+        },
+        {
+          "id": 206,
+          "dataplan_id": "206",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30days (126.0 +12gb Night)",
+          "plan": "138.0GB",
+          "plan_amount": "18600"
+        },
+        {
+          "id": 286,
+          "dataplan_id": "286",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30 Days (MEGA DATA PLANS)",
+          "plan": "225.0GB",
+          "plan_amount": "28500"
+        },
+        {
+          "id": 287,
+          "dataplan_id": "287",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30 Days (MEGA DATA PLANS)",
+          "plan": "300.0GB",
+          "plan_amount": "34200"
+        },
+        {
+          "id": 288,
+          "dataplan_id": "288",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "30 Days (MEGA DATA PLANS)",
+          "plan": "425.0GB",
+          "plan_amount": "47500"
+        },
+        {
+          "id": 289,
+          "dataplan_id": "289",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "120 Days (MEGA DATA PLANS)",
+          "plan": "525.0GB",
+          "plan_amount": "57000"
+        },
+        {
+          "id": 290,
+          "dataplan_id": "290",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "120 Days (MEGA DATA PLANS)",
+          "plan": "675.0GB",
+          "plan_amount": "71250"
+        },
+        {
+          "id": 285,
+          "dataplan_id": "285",
+          "network": 2,
+          "plan_type": "",
+          "plan_network": "GLO",
+          "month_validate": "365 Days (MEGA DATA PLANS)",
+          "plan": "1.0TB",
+          "plan_amount": "80000"
+        }
+      ]
+    },
+    "AIRTEL_PLAN": {
+      "ALL": [
+        {
+          "id": 229,
+          "dataplan_id": "229",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "7 Days",
+          "plan": "100.0MB",
+          "plan_amount": "100"
+        },
+        {
+          "id": 228,
+          "dataplan_id": "228",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days{Corpoorate Gifting}",
+          "plan": "500.0MB",
+          "plan_amount": "138"
+        },
+        {
+          "id": 230,
+          "dataplan_id": "230",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "7 Days",
+          "plan": "300.0MB",
+          "plan_amount": "150"
+        },
+        {
+          "id": 225,
+          "dataplan_id": "225",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days{Corpoorate Gifting}",
+          "plan": "1.0GB",
+          "plan_amount": "272"
+        },
+        {
+          "id": 226,
+          "dataplan_id": "226",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days{Corpoorate Gifting}",
+          "plan": "2.0GB",
+          "plan_amount": "544"
+        },
+        {
+          "id": 236,
+          "dataplan_id": "236",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "1.5GB",
+          "plan_amount": "850"
+        },
+        {
+          "id": 239,
+          "dataplan_id": "239",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "2.0GB",
+          "plan_amount": "1020"
+        },
+        {
+          "id": 238,
+          "dataplan_id": "238",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "3.0GB",
+          "plan_amount": "1275"
+        },
+        {
+          "id": 227,
+          "dataplan_id": "227",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days{Corpoorate Gifting}",
+          "plan": "5.0GB",
+          "plan_amount": "1360"
+        },
+        {
+          "id": 240,
+          "dataplan_id": "240",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "4.5GB",
+          "plan_amount": "1700"
+        },
+        {
+          "id": 241,
+          "dataplan_id": "241",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "6.0GB",
+          "plan_amount": "2125"
+        },
+        {
+          "id": 244,
+          "dataplan_id": "244",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "10.0GB",
+          "plan_amount": "2720"
+        },
+        {
+          "id": 243,
+          "dataplan_id": "243",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "11.0GB",
+          "plan_amount": "3400"
+        },
+        {
+          "id": 291,
+          "dataplan_id": "291",
+          "network": 4,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "15.0GB",
+          "plan_amount": "4080"
+        },
+        {
+          "id": 246,
+          "dataplan_id": "246",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "20.0GB",
+          "plan_amount": "4250"
+        },
+        {
+          "id": 247,
+          "dataplan_id": "247",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days",
+          "plan": "40.0GB",
+          "plan_amount": "8500"
+        },
+        {
+          "id": 248,
+          "dataplan_id": "248",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 Days",
+          "plan": "75.0GB",
+          "plan_amount": "12750"
+        },
+        {
+          "id": 249,
+          "dataplan_id": "249",
+          "network": 4,
+          "plan_type": "GIFTING",
+          "plan_network": "AIRTEL",
+          "month_validate": "30 days",
+          "plan": "120.0GB",
+          "plan_amount": "17000"
+        }
+      ]
+    },
+    "9MOBILE_PLAN": {
+      "ALL": [
+        {
+          "id": 300,
+          "dataplan_id": "300",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "1.0GB",
+          "plan_amount": "200"
+        },
+        {
+          "id": 301,
+          "dataplan_id": "301",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "2.0GB",
+          "plan_amount": "400"
+        },
+        {
+          "id": 182,
+          "dataplan_id": "182",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "500.0MB",
+          "plan_amount": "460"
+        },
+        {
+          "id": 302,
+          "dataplan_id": "302",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "3.0GB",
+          "plan_amount": "600"
+        },
+        {
+          "id": 303,
+          "dataplan_id": "303",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "4.0GB",
+          "plan_amount": "800"
+        },
+        {
+          "id": 183,
+          "dataplan_id": "183",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "1.5GB",
+          "plan_amount": "920"
+        },
+        {
+          "id": 304,
+          "dataplan_id": "304",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "5.0GB",
+          "plan_amount": "1000"
+        },
+        {
+          "id": 184,
+          "dataplan_id": "184",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "2.0GB",
+          "plan_amount": "1150"
+        },
+        {
+          "id": 185,
+          "dataplan_id": "185",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "3.0GB",
+          "plan_amount": "1400"
+        },
+        {
+          "id": 186,
+          "dataplan_id": "186",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "4.5GB",
+          "plan_amount": "1850"
+        },
+        {
+          "id": 305,
+          "dataplan_id": "305",
+          "network": 3,
+          "plan_type": "CORPORATE GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 Days",
+          "plan": "10.0GB",
+          "plan_amount": "2000"
+        },
+        {
+          "id": 187,
+          "dataplan_id": "187",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "11.0GB",
+          "plan_amount": "3650"
+        },
+        {
+          "id": 188,
+          "dataplan_id": "188",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "15.0GB",
+          "plan_amount": "4600"
+        },
+        {
+          "id": 189,
+          "dataplan_id": "189",
+          "network": 3,
+          "plan_type": "GIFTING",
+          "plan_network": "9MOBILE",
+          "month_validate": "30 days{Gifting}",
+          "plan": "40.0GB",
+          "plan_amount": "9200"
+        }
+      ]
+    }
+  },
+  "Cableplan": {
+    "GOTVPLAN": [
+      {
+        "id": 16,
+        "cableplan_id": "16",
+        "cable": "GOTV",
+        "package": "GOtv Jinja",
+        "plan_amount": "2700"
+      },
+      {
+        "id": 17,
+        "cableplan_id": "17",
+        "cable": "GOTV",
+        "package": "GOtv Jolli",
+        "plan_amount": "3950"
+      },
+      {
+        "id": 2,
+        "cableplan_id": "2",
+        "cable": "GOTV",
+        "package": "GOtv Max",
+        "plan_amount": "5700"
+      }
+    ],
+    "DSTVPLAN": [
+      {
+        "id": 32,
+        "cableplan_id": "32",
+        "cable": "DSTV",
+        "package": "DStv HDPVR Access Service",
+        "plan_amount": "2900"
+      },
+      {
+        "id": 20,
+        "cableplan_id": "20",
+        "cable": "DSTV",
+        "package": "DStv Padi",
+        "plan_amount": "2950"
+      },
+      {
+        "id": 33,
+        "cableplan_id": "33",
+        "cable": "DSTV",
+        "package": "ExtraView Access",
+        "plan_amount": "4000"
+      },
+      {
+        "id": 6,
+        "cableplan_id": "6",
+        "cable": "DSTV",
+        "package": "DStv Yanga",
+        "plan_amount": "4200"
+      },
+      {
+        "id": 28,
+        "cableplan_id": "28",
+        "cable": "DSTV",
+        "package": "DStv Padi + ExtraView",
+        "plan_amount": "5900"
+      },
+      {
+        "id": 27,
+        "cableplan_id": "27",
+        "cable": "DSTV",
+        "package": "DStv Yanga + ExtraView",
+        "plan_amount": "6900"
+      },
+      {
+        "id": 19,
+        "cableplan_id": "19",
+        "cable": "DSTV",
+        "package": "DStv Confam",
+        "plan_amount": "7400"
+      },
+      {
+        "id": 23,
+        "cableplan_id": "23",
+        "cable": "DSTV",
+        "package": "DStv Asia",
+        "plan_amount": "8300"
+      },
+      {
+        "id": 26,
+        "cableplan_id": "26",
+        "cable": "DSTV",
+        "package": "DStv Confam + ExtraView",
+        "plan_amount": "9600"
+      },
+      {
+        "id": 7,
+        "cableplan_id": "7",
+        "cable": "DSTV",
+        "package": "DStv Compact",
+        "plan_amount": "12500"
+      },
+      {
+        "id": 29,
+        "cableplan_id": "29",
+        "cable": "DSTV",
+        "package": "DStv Compact + Extra View",
+        "plan_amount": "13900"
+      },
+      {
+        "id": 8,
+        "cableplan_id": "8",
+        "cable": "DSTV",
+        "package": "DStv Compact Plus",
+        "plan_amount": "19800"
+      },
+      {
+        "id": 31,
+        "cableplan_id": "31",
+        "cable": "DSTV",
+        "package": "DStv Compact Plus - Extra View",
+        "plan_amount": "20000"
+      },
+      {
+        "id": 25,
+        "cableplan_id": "25",
+        "cable": "DSTV",
+        "package": "DStv Premium Asia",
+        "plan_amount": "27500"
+      },
+      {
+        "id": 30,
+        "cableplan_id": "30",
+        "cable": "DSTV",
+        "package": "DStv Premium + Extra View",
+        "plan_amount": "27900"
+      },
+      {
+        "id": 9,
+        "cableplan_id": "9",
+        "cable": "DSTV",
+        "package": "DStv Premium",
+        "plan_amount": "29500"
+      },
+      {
+        "id": 24,
+        "cableplan_id": "24",
+        "cable": "DSTV",
+        "package": "DStv Premium French",
+        "plan_amount": "36600"
+      }
+    ],
+    "STARTIMEPLAN": [
+      {
+        "id": 42,
+        "cableplan_id": "42",
+        "cable": "STARTIME",
+        "package": "Nova - 100 Naira - 1 Day",
+        "plan_amount": "150"
+      },
+      {
+        "id": 44,
+        "cableplan_id": "44",
+        "cable": "STARTIME",
+        "package": "Smart - 250 Naira - 1 Day",
+        "plan_amount": "250"
+      },
+      {
+        "id": 43,
+        "cableplan_id": "43",
+        "cable": "STARTIME",
+        "package": "Basic - 200 Naira - 1 Day",
+        "plan_amount": "300"
+      },
+      {
+        "id": 45,
+        "cableplan_id": "45",
+        "cable": "STARTIME",
+        "package": "Classic - 320 Naira - 1 Day",
+        "plan_amount": "400"
+      },
+      {
+        "id": 37,
+        "cableplan_id": "37",
+        "cable": "STARTIME",
+        "package": "Nova -400 Naira - 1 Week",
+        "plan_amount": "500"
+      },
+      {
+        "id": 46,
+        "cableplan_id": "46",
+        "cable": "STARTIME",
+        "package": "Super - 400 Naira - 1 Day",
+        "plan_amount": "800"
+      },
+      {
+        "id": 38,
+        "cableplan_id": "38",
+        "cable": "STARTIME",
+        "package": "Basic - 700 Naira - 1 Week",
+        "plan_amount": "1000"
+      },
+      {
+        "id": 39,
+        "cableplan_id": "39",
+        "cable": "STARTIME",
+        "package": "Smart - 1300 Naira - 1 Week",
+        "plan_amount": "1300"
+      },
+      {
+        "id": 40,
+        "cableplan_id": "40",
+        "cable": "STARTIME",
+        "package": "Classic - 1500 Naira - 1 Week",
+        "plan_amount": "1500"
+      },
+      {
+        "id": 14,
+        "cableplan_id": "14",
+        "cable": "STARTIME",
+        "package": "Nova - 900 Naira - 1 Month",
+        "plan_amount": "1700"
+      },
+      {
+        "id": 41,
+        "cableplan_id": "41",
+        "cable": "STARTIME",
+        "package": "Super - 1,800 Naira - 1 Week",
+        "plan_amount": "2500"
+      },
+      {
+        "id": 12,
+        "cableplan_id": "12",
+        "cable": "STARTIME",
+        "package": "Basic - 2,100 Naira - 1 Month",
+        "plan_amount": "3000"
+      },
+      {
+        "id": 13,
+        "cableplan_id": "13",
+        "cable": "STARTIME",
+        "package": "Smart - 2,600 Naira - 1 Month",
+        "plan_amount": "3800"
+      },
+      {
+        "id": 11,
+        "cableplan_id": "11",
+        "cable": "STARTIME",
+        "package": "Classic - 3100 Naira - 1 Mont",
+        "plan_amount": "3800"
+      },
+      {
+        "id": 15,
+        "cableplan_id": "15",
+        "cable": "STARTIME",
+        "package": "Super - 4,900 Naira - 1 Month",
+        "plan_amount": "7500"
+      }
+    ],
+    "cablename": [
+      {
+        "id": 1,
+        "name": "GOTV"
+      },
+      {
+        "id": 2,
+        "name": "DSTV"
+      },
+      {
+        "id": 3,
+        "name": "STARTIME"
+      }
+    ]
+  },
+  "support_phone_number": "2349124641049",
+  "recharge": {
+    "mtn": 0,
+    "glo": 0,
+    "airtel": 0,
+    "9mobile": 0,
+    "mtn_pin": [
+      {
+        "network_name": "MTN",
+        "amount": 100.0,
+        "amount_to_pay": 98.0
+      },
+      {
+        "network_name": "MTN",
+        "amount": 200.0,
+        "amount_to_pay": 198.0
+      },
+      {
+        "network_name": "MTN",
+        "amount": 500.0,
+        "amount_to_pay": 498.0
+      }
+    ],
+    "glo_pin": [
+      {
+        "network_name": "GLO",
+        "amount": 100.0,
+        "amount_to_pay": 97.0
+      },
+      {
+        "network_name": "GLO",
+        "amount": 200.0,
+        "amount_to_pay": 197.0
+      },
+      {
+        "network_name": "GLO",
+        "amount": 500.0,
+        "amount_to_pay": 497.0
+      }
+    ],
+    "airtel_pin": [
+      {
+        "network_name": "AIRTEL",
+        "amount": 100.0,
+        "amount_to_pay": 98.0
+      },
+      {
+        "network_name": "AIRTEL",
+        "amount": 200.0,
+        "amount_to_pay": 198.0
+      },
+      {
+        "network_name": "AIRTEL",
+        "amount": 500.0,
+        "amount_to_pay": 497.0
+      }
+    ],
+    "9mobile_pin": [
+      {
+        "network_name": "9MOBILE",
+        "amount": 100.0,
+        "amount_to_pay": 97.0
+      },
+      {
+        "network_name": "9MOBILE",
+        "amount": 200.0,
+        "amount_to_pay": 197.0
+      },
+      {
+        "network_name": "9MOBILE",
+        "amount": 500.0,
+        "amount_to_pay": 497.0
+      }
+    ]
+  }
+}

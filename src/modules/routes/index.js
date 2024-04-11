@@ -7,6 +7,6 @@ export const setRoutes = () => {
   router.use("/user", userRoutes());
   router.use("/product", productRoutes());
   router.use("/payment", paymentRoutes());
-  router.use('/upload', insertVideoRoute());
+  router.use("/upload", insertVideoRoute());
   return router;
 };

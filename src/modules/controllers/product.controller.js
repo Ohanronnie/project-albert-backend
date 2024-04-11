@@ -24,10 +24,10 @@ export const addWatermark = catchAsync(async (req, res) => {
   const output = resolvePath(`uploads/${Date.now().toString(32)}.mp4`);
   let insertVideo;
   if (insertPath) {
-    if (!insertPath.startsWith('http')) {
-      insertVideo = insertPath
+    if (!insertPath.startsWith("http")) {
+      insertVideo = insertPath;
     } else {
-      insertVideo = randomBytes(12).toString('base64') + '.mp4';
+      insertVideo = randomBytes(12).toString("base64") + ".mp4";
       let downloaded = await downloadFile(insertPath, insertVideo);
     }
   }
@@ -39,7 +39,7 @@ export const addWatermark = catchAsync(async (req, res) => {
     insertVideo,
     insertTime,
     username,
-    res
+    res,
   )
     .then(async () => {
       unlinkSync(videoPath);
@@ -80,23 +80,23 @@ export const saveClip = catchAsync(async (req, res) => {
       $push: { savedClips: insertCloudResponse },
     });
   }
-  res.sendStatus(200)
+  res.sendStatus(200);
 });
 export const getSavedClip = catchAsync(async (req, res) => {
-  const saved = await User.findById(req.userId).select('savedClips');  
+  const saved = await User.findById(req.userId).select("savedClips");
   return res.status(201).json({ clips: saved.savedClips });
-})
+});
 export const getVideoUrl = catchAsync(async (req, res) => {
-  const videos = await User.find().select('editedVideos');
+  const videos = await User.find().select("editedVideos");
   const id = req.params.videoId;
   for (let video of videos) {
     for (let edited of video.editedVideos) {
       if (edited.id == id) {
         return res.status(200).json({
-          src: edited.video.url
-        })
+          src: edited.video.url,
+        });
       }
     }
   }
-  return res.sendStatus(404)
-})
+  return res.sendStatus(404);
+});

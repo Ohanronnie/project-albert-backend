@@ -25,7 +25,7 @@ const appName = ENVIRONMENT.APP.NAME;
 /**
  * App Security
  */
-app.set('trust proxy', true)
+app.set("trust proxy", true);
 app.use(helmet());
 app.use(
   cors({
@@ -58,45 +58,48 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.get("/video", (req, res) => {
   try {
-  const videoPath = path.join(process.cwd(), "uploads", req.query.path || 'testfile'); // Update with your video file path
+    const videoPath = path.join(
+      process.cwd(),
+      "uploads",
+      req.query.path || "testfile",
+    ); // Update with your video file path
 
-  const stat = fs.statSync(videoPath);
-  const fileSize = stat.size;
-  const range = req.headers.range;
+    const stat = fs.statSync(videoPath);
+    const fileSize = stat.size;
+    const range = req.headers.range;
 
-  if (range) {
-    const parts = range.replace(/bytes=/, "").split("-");
-    const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    if (range) {
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
 
-    const chunksize = end - start + 1;
-    const file = fs.createReadStream(videoPath, { start, end });
-    const head = {
-      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
-      "Accept-Ranges": "bytes",
-      "Content-Length": chunksize,
-      "Content-Type": "video/mp4",
-      'Cross-Origin-Resource-Policy': 'cross-origin'
-    };
+      const chunksize = end - start + 1;
+      const file = fs.createReadStream(videoPath, { start, end });
+      const head = {
+        "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+        "Accept-Ranges": "bytes",
+        "Content-Length": chunksize,
+        "Content-Type": "video/mp4",
+        "Cross-Origin-Resource-Policy": "cross-origin",
+      };
 
-    res.writeHead(206, head);
-    file.pipe(res);
-  } else {
-    const head = {
-      "Content-Length": fileSize,
-      "Content-Type": "application/octet-stream",
-      'Content-Disposition': 'attachment',
-      'Cross-Origin-Resource-Policy': 'cross-origin'
-    };
-    res.writeHead(200, head);
- //   res.download(videoPath)
-    fs.createReadStream(videoPath).pipe(res);
-  }
-  } catch(err){
-    console.error(err)
+      res.writeHead(206, head);
+      file.pipe(res);
+    } else {
+      const head = {
+        "Content-Length": fileSize,
+        "Content-Type": "application/octet-stream",
+        "Content-Disposition": "attachment",
+        "Cross-Origin-Resource-Policy": "cross-origin",
+      };
+      res.writeHead(200, head);
+      //   res.download(videoPath)
+      fs.createReadStream(videoPath).pipe(res);
+    }
+  } catch (err) {
+    console.error(err);
   }
 });
 app.use("/", setRoutes());
@@ -109,8 +112,8 @@ app.all(
   }),
 );
 app.use((req, res, next) => {
-  console.log(req.ip, req.socket.remoteAddress)
-})
+  console.log(req.ip, req.socket.remoteAddress);
+});
 /**
  * Error handler middlewares
  */
@@ -128,7 +131,7 @@ app.get("*", (req, res) =>
 );
 
 /**
- * Bootstrap server 
+ * Bootstrap server
  */
 app.listen(port, () => {
   console.log("=> " + appName + "app listening on port" + port + "!");

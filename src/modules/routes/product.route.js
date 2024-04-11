@@ -1,6 +1,16 @@
 import { Router } from "express";
-import { addWatermark, getSavedClip, getVideoUrl, saveClip } from "../controllers/product.controller.js";
+import {
+  addWatermark,
+  getSavedClip,
+  getVideoUrl,
+  saveClip,
+} from "../controllers/product.controller.js";
 import { upload, paymentGuard, guard } from "../../common/utils/helper.js";
+import {
+  LoginDetails,
+  pageSelect,
+  postContent,
+} from "../controllers/facebook.controller.js";
 const router = Router();
 const fields = [
   {
@@ -10,7 +20,7 @@ const fields = [
   {
     name: "watermark",
     maxCount: 1,
-  }
+  },
 ];
 export const productRoutes = () => {
   router.post(
@@ -20,19 +30,27 @@ export const productRoutes = () => {
     upload.fields(fields),
     addWatermark,
   );
-  router.post('/save-clip', guard, paymentGuard, saveClip);
-  router.post('/saved/clips', guard, paymentGuard, getSavedClip);
-  router.get('/saved/video/:videoId', getVideoUrl)
+  router.post("/save-clip", guard, paymentGuard, saveClip);
+  router.post("/saved/clips", guard, paymentGuard, getSavedClip);
+  router.get("/saved/video/:videoId", getVideoUrl);
+  router.post("/login/facebook", guard, paymentGuard, LoginDetails);
+  router.post("/facebook/savepage", guard, paymentGuard, pageSelect);
   return router;
 };
 
 export const insertVideoRoute = () => {
-  router.post("/insert-video", guard, paymentGuard, upload.single('video'), (req, res) => {
-    console.log(req.file)
-    const path = req.file.path;
-    return res.json({
-      path
-    })
-  });
-  return router
-}
+  router.post(
+    "/insert-video",
+    guard,
+    paymentGuard,
+    upload.single("video"),
+    (req, res) => {
+      console.log(req.file);
+      const path = req.file.path;
+      return res.json({
+        path,
+      });
+    },
+  );
+  return router;
+};
