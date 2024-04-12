@@ -10,6 +10,8 @@ import {
   LoginDetails,
   pageSelect,
   postContent,
+  getPages,
+  getSavedPages,
 } from "../controllers/facebook.controller.js";
 const router = Router();
 const fields = [
@@ -35,6 +37,9 @@ export const productRoutes = () => {
   router.get("/saved/video/:videoId", getVideoUrl);
   router.post("/login/facebook", guard, paymentGuard, LoginDetails);
   router.post("/facebook/savepage", guard, paymentGuard, pageSelect);
+  router.get("/facebook/getpage", guard, paymentGuard, getPages);
+  router.post("/facebook/post", postContent);
+  router.get("/facebook/getsavedpage", guard, paymentGuard, getSavedPages);
   return router;
 };
 

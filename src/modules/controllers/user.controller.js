@@ -4,6 +4,7 @@ import { User } from "../schemas/user.schema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Joi from "joi";
+import axios from "axios";
 const userValidationSchema = Joi.object().keys({
   email: Joi.string().email().required(),
   password: Joi.string().min(8).required(),
@@ -31,10 +32,17 @@ export const createToken = catchAsync(async (req, res) => {
     error,
   } = userValidationSchema.validate(req.body);
   if (error) throw new AppError(error.details[0].message, 301);
-
+  const ip = req.headers["x-forwarded-for"]?.[0];
   const user = await User.findOne({ email });
+  let countryCode;
+  if (ip) {
+    const response = await axios.get("http://ip-api.com/json/" + ip);
+    if (response.data.countryCode) countryCode = response.data.countryCode;
+  }
   if (!user) throw new AppError("Email/Account doesn't exist", 404);
   const isPassValid = bcrypt.compareSync(password, user.password);
+  countryCode &&
+    (await User.findOneAndUpdate({ email, password }, { countryCode }));
   if (!isPassValid) throw new AppError("Incorrect Password", 301);
   const token = jwt.sign(
     {

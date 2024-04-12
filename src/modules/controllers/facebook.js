@@ -88,11 +88,13 @@ export class FacebookPost {
           cookie: this.cookie,
         },
       );
+
       const page = JSON.parse(_pages.body).data.map((value) => ({
         id: value.id,
         name: value.name,
         token: value.access_token,
       }));
+      console.log(page);
 
       /*      let content = ["ENTERTAINMENT", "SPORTS", "BUSINESS", "TECHNOLOGY", "HEALTH", "SCIENCE"];
             content = content[Math.floor(Math.random() * content.length)];

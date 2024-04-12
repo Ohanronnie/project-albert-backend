@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    countryCode: String,
     savedClips: [],
     editedVideos: [],
   },

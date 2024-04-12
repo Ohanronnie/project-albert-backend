@@ -5,6 +5,10 @@ import { catchAsync } from "../../common/utils/errorHandler.js";
 import { topic as Topic } from "./news.js";
 import Session from "./session.js";
 import { FacebookPost } from "./facebook.js";
+import axios from "axios";
+import { JSDOM } from "jsdom";
+import { Readability } from "@mozilla/readability";
+import cheerio from "cheerio";
 export async function LoginDetails(req, res) {
   try {
     const { email, password } = req.body;
@@ -18,7 +22,8 @@ export async function LoginDetails(req, res) {
     let pages = await Facebook.getPages();
     if (!pages)
       return res.status(400).json("Error occurred somewhere! Re-login");
-    if (!pages.page.length < 1)
+    console.log(pages);
+    if (pages.page.length < 1)
       return res.status(200).json({ message: "No Page Available" });
     for (let i = 0; i < pages.page.length; i++) {
       let _page = pages.page[i];
@@ -32,7 +37,11 @@ export async function LoginDetails(req, res) {
       await page.save();
     }
     return res.status(200).json({
-      page: pages.page.map((val) => ({ name: val.name, id: val.id })),
+      page: pages.page.map((val) => ({
+        pageName: val.name,
+        pageId: val.id,
+        pageType: !!val.contentType,
+      })),
     });
   } catch (err) {
     console.log(error);
@@ -59,6 +68,7 @@ export async function pageSelect(req, res) {
 
 async function getNews(topic, country, language) {
   const kHeadline = await Topic(topic, { n: 5, language, country });
+
   const TOPIC = [];
   for (let i = 0; i < kHeadline.length; i++) {
     let headline = kHeadline[i];
@@ -86,7 +96,9 @@ async function getNews(topic, country, language) {
         content: content.excerpt,
         imageUrl: imageURLs,
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
   return TOPIC;
 }
@@ -115,23 +127,80 @@ export async function postContent(req, res) {
   try {
     const pages = await Page.find({});
     const fb = new FacebookPost();
+
     for (let i = 0; i < pages.length; i++) {
       let page = pages[i];
-      let content = await getNews(page.content, "ng", "en");
-      content = content.filter((e) => e);
-      const post = content[0];
-      if (content.length != 0 && post) {
-        if (!(await Post.findOne({ content: post.content }))) {
-          await Post.create({ content: post.content });
-          await fb.postToFacebook(
-            page.pageCookie,
-            page.pageToken,
-            page.pageId,
-            post.content,
-            post.imageUrl[0],
-          );
+
+      if (page.contentType) {
+        const user = await User.findOne({ _id: page.ownerId });
+        let content = await getNews(
+          page.contentType,
+          user.countryCode || "ng",
+          "en",
+        );
+
+        content = content.filter((e) => e);
+        const post = content[0];
+
+        if (content.length != 0 && post) {
+          if (!(await Post.findOne({ content: post.content }))) {
+            await Post.create({ content: post.content });
+            await fb.postToFacebook(
+              page.pageCookie,
+              page.pageToken,
+              page.pageId,
+              post.content,
+              post.imageUrl[0],
+            );
+          }
         }
+      } else {
       }
     }
-  } catch (error) {}
+    return res.status(200).json("done");
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function getPages(req, res) {
+  try {
+    const pages = await Page.find({ ownerId: req.userId });
+    if (pages.length == 0) {
+      return res.status(200).json([]);
+    } else {
+      return res
+        .status(200)
+        .json(
+          pages.map((page) => ({
+            pageName: page.pageName,
+            pageId: page.pageId,
+            pageType: !!page.contentType,
+          })),
+        );
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(400).json("Error occurred somewhere ");
+  }
+}
+export async function getSavedPages(req, res) {
+  try {
+    let pages = await Page.find({ ownerId: req.userId });
+    pages = pages.filter((e) => e.contentType);
+    if (pages.length == 0) {
+      return res.status(200).json([]);
+    } else {
+      return res
+        .status(200)
+        .json(
+          pages.map((page) => ({
+            pageName: page.pageName,
+            pageId: page.pageId,
+          })),
+        );
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(400).json("Error occurred somewhere ");
+  }
 }
