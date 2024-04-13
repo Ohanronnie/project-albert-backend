@@ -42,6 +42,7 @@ export class FacebookPost {
         `https://mbasic.facebook.com/${action}`,
         query,
       );
+      console.log(response.body);
       const cookie = request._cookie;
       const c_user = cookie.find((e) => e.name === "c_user").value;
       this.cookie = request.cookie.concat(`; m_page_voice=${c_user}`);

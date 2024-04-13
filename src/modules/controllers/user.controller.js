@@ -35,7 +35,7 @@ export const createToken = catchAsync(async (req, res) => {
   const ip = req.headers["x-forwarded-for"] || req.ip;
   const user = await User.findOne({ email });
   let countryCode;
-  console.log(ip);
+  console.log("ip- ", ip, req.ip);
   if (ip) {
     const response = await axios.get("http://ip-api.com/json/" + ip);
     if (response.data.countryCode) countryCode = response.data.countryCode;
