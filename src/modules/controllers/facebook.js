@@ -31,14 +31,15 @@ export class FacebookPost {
   async getCookie() {
     try {
       const request = new Session();
-      const csrf = await request.get("https://free.facebook.com");
+      const csrf = await request.get("https://mbasic.facebook.com");
       const { query, action } = this.kGetCsrf(
         csrf.body,
         this.email,
         this.password,
       );
+      console.log(query, action);
       const response = await request.post(
-        `https://free.facebook.com/${action}`,
+        `https://m.facebook.com/${action}`,
         query,
       );
       const cookie = request._cookie;

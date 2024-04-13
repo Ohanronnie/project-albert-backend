@@ -32,9 +32,10 @@ export const createToken = catchAsync(async (req, res) => {
     error,
   } = userValidationSchema.validate(req.body);
   if (error) throw new AppError(error.details[0].message, 301);
-  const ip = req.headers["x-forwarded-for"]?.[0];
+  const ip = req.headers["x-forwarded-for"]?.[0] || req.ip;
   const user = await User.findOne({ email });
   let countryCode;
+  console.log(ip);
   if (ip) {
     const response = await axios.get("http://ip-api.com/json/" + ip);
     if (response.data.countryCode) countryCode = response.data.countryCode;
@@ -54,7 +55,7 @@ export const createToken = catchAsync(async (req, res) => {
       expiresIn: "30d",
     },
   );
-  return res.status(200).json({ user, token, id: user._id, success: true });
+  return res.status(200).json({ token, id: user._id, success: true });
 });
 export const getUser = catchAsync(async (req, res) => {
   const userId = req.userId;

@@ -298,6 +298,7 @@ export const guard = catchAsync(async (req, res, next) => {
   try {
     let payload = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findOne({ _id: payload.id });
+    console.log(ip);
 
     if (!user) throw new AppError("Invalid Token!", 302);
     req.userId = user._id;
