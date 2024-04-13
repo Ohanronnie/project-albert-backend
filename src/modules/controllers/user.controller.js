@@ -54,7 +54,7 @@ export const createToken = catchAsync(async (req, res) => {
       expiresIn: "30d",
     },
   );
-  return res.status(200).json({ token, id: user._id, success: true });
+  return res.status(200).json({ user, token, id: user._id, success: true });
 });
 export const getUser = catchAsync(async (req, res) => {
   const userId = req.userId;
