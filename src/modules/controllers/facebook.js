@@ -39,7 +39,7 @@ export class FacebookPost {
       );
       console.log(query, action);
       const response = await request.post(
-        `https://m.facebook.com/${action}`,
+        `https://mbasic.facebook.com/${action}`,
         query,
       );
       const cookie = request._cookie;
