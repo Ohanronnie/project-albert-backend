@@ -294,11 +294,10 @@ export const guard = catchAsync(async (req, res, next) => {
     req.headers["authorization"]?.split(" ")[1] ||
     req.headers["Authorization"]?.split(" ")[1] ||
     "";
-  const ip = req.headers["x-forwarded-for"]?.[0];
   try {
     let payload = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findOne({ _id: payload.id });
-    console.log(ip);
+    console.log(req.ip, user.countryCode);
 
     if (!user) throw new AppError("Invalid Token!", 302);
     req.userId = user._id;
