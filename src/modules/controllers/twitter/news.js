@@ -46,7 +46,7 @@ export const fetchRecentNews = async (topic = 'technology', language = 'en', cou
         const latestArticle = data.articles
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))[0];
 
-        if (!latestArticle || !isAlreadyProcessed(topic, latestArticle.url)) {
+        if (!latestArticle || isAlreadyProcessed(topic, latestArticle.url)) {
           console.log(latestArticle)
             console.log('No new articles.');
             return null;

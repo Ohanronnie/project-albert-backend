@@ -167,6 +167,7 @@ export async function postDataToX(req, res) {
       await postOnTwitter(user._id, news.summary, news.image);
       console.log('done')
     }
+    res.status(200).json('done')
   } catch(err){
    // TwitterSchema.deleteMany().then(console.log)
 console.log(err)
