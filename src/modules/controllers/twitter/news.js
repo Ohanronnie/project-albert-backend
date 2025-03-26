@@ -46,6 +46,7 @@ export const fetchRecentNews = async (topic = 'technology', language = 'en', cou
         const latestArticle = data.articles
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))[0];
 
+            console.log(latestArticle)
         if (!latestArticle || isAlreadyProcessed(topic, latestArticle.url)) {
           console.log(latestArticle)
             console.log('No new articles.');
@@ -62,7 +63,7 @@ console.log(latestArticle)
 
         return { topic, summary, image: latestArticle.urlToImage };
     } catch (error) {
-        console.error('❌ Error:', error.response?.data || error.message);
+        console.error('❌ Error:', error || error.message);
         return null;
     }
 };
