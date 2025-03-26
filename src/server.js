@@ -36,8 +36,10 @@ app.use(
       "https://www.itoolsai.com",
       "https://www.itoolsai.com/",
       process.env.FRONTEND_URL,
+      'https://itoolsai-frontend.onrender.com/',
+      'https://itoolsai-frontend.onrender.com'
     ],
-    method: ["GET", "POST"],
+    method: ["GET", "POST", 'DELETE'],
     credentials: true,
   }),
 );
