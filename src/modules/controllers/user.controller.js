@@ -66,7 +66,13 @@ export const getUser = catchAsync(async (req, res) => {
   const todayDate = new Date();
   const accountCreatedAt = new Date(user.createdAt);
   // check if the user has paid/subscribed
-
+  // remove this later
+  /*
+  return res.status(200).json({
+    success: true,
+    paymentRequired: false,
+    paymentExpiresOn: new Date()+1e10,
+  });*/
   if (user.hasPaid) {
     if (user.paymentExpiresIn < todayDate) {
       return res.status(200).json({

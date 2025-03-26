@@ -1,107 +1,34 @@
 import Session from "./session.js";
-
+import axios from 'axios'
 export class FacebookPost {
-  constructor(email, password) {
-    this.email = email;
-    this.password = password;
-    this.id = "";
-    this.cookie = "";
-    this.token = "";
+  constructor(token, id) {
+    this.id = id;
+    this.token = token;
   }
-  kGetCsrf(body, email, pass) {
-    const query = new URLSearchParams();
-    query.append("lsd", body.match('name="lsd" value="(.*?)"')?.[1]);
-    query.append("jazoest", body.match('name="jazoest" value="(.*?)"')[1]);
-    query.append("m_ts", body.match('name="m_ts" value="(.*?)"')[1]);
-    query.append("li", body.match('name="li" value="(.*?)"')[1]);
-    query.append("try_number", "0");
-    query.append("unrecognized_tries", "0");
-    query.append("email", email);
-    query.append("pass", pass);
-    query.append("login", "Log In");
-    query.append("bi_xrwh", "0");
-    const action = body.match('method="post" action="(.*?)"')?.[1];
-
-    return {
-      query: query.toString(),
-      action,
-    };
-  }
-
-  async getCookie() {
+  async validatePage(){
     try {
-      const request = new Session();
-      const csrf = await request.get("https://mbasic.facebook.com");
-      const { query, action } = this.kGetCsrf(
-        csrf.body,
-        this.email,
-        this.password,
-      );
-      console.log(query, action);
-      const response = await request.post(
-        `https://mbasic.facebook.com/${action}`,
-        query,
-      );
-      console.log(response.body, request, response);
-      const cookie = request._cookie;
-      const c_user = cookie.find((e) => e.name === "c_user").value;
-      this.cookie = request.cookie.concat(`; m_page_voice=${c_user}`);
-      this.id = c_user;
-
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-  async getToken() {
-    try {
-      const session = new Session();
-      const csrf = await session.get(
-        "https://mbasic.facebook.com/adsmanager/manage",
-        null,
-        {
-          cookie: this.cookie,
-        },
-      );
-      const act = csrf.body.match(/act=(.*?)\d+/)[0];
-      const _token = await session.get(
-        `https://adsmanager.facebook.com/adsmanager/manage?${act}&breakdown_regrouping=1`,
-        null,
-        {
-          cookie: this.cookie,
-        },
-      );
-      const token = _token.body.match('accessToken="(.*?)"')[1];
-      this.token = token;
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
+      let data = await axios.get(`https://graph.facebook.com/${this.id}?access_token=${this.token}`);
+      console.log(data.data);
+      console.log('hello')
+      return ({
+        ...data.data
+      });
+    } catch(err){
+      console.log(err)
+      return {
+        error: err
+      }
     }
   }
   async getPages() {
     try {
       const session = new Session();
       const _pages = await session.get(
-        `https://graph.facebook.com/${this.id}/accounts?access_token=${this.token}`,
-        null,
-        {
-          cookie: this.cookie,
-        },
+        `https://graph.facebook.com/${this.id}?access_token=${this.token}`
       );
+      console.log(_pages.body)
 
-      const page = JSON.parse(_pages.body).data.map((value) => ({
-        id: value.id,
-        name: value.name,
-        token: value.access_token,
-      }));
-
-      /*      let content = ["ENTERTAINMENT", "SPORTS", "BUSINESS", "TECHNOLOGY", "HEALTH", "SCIENCE"];
-            content = content[Math.floor(Math.random() * content.length)];
-            ToPost.insert({ ...page, cookie: this.cookie, content });*/
-
-      return { page, cookie: this.cookie };
+      return { page  };
     } catch (error) {
       console.log(error);
       return false;
@@ -119,7 +46,6 @@ export class FacebookPost {
         }),
         {
           "content-type": "application/json",
-          cookie,
         },
       );
     } else {
@@ -128,10 +54,12 @@ export class FacebookPost {
           message,
         )}&access_token=${token}`,
         "",
-        { cookie },
       );
     }
-
+    console.log(posted,message,token,id)
     return posted.body;
   }
 }
+/*
+const _x = new FacebookPost('EAAG5MBLBHpIBO0yuHlI00HbBesMzmWY59s5wRdcikoEf1X9SAt1HYbhr6q0UDMHkVVYfP5g1EOpqDLA7nb50KFeZB4EdZBZA7bWbIpPvGqEVBIJl9PeZBT9Ce4N6AV1Lab1rpckH27Cj2g3qX05vdjs1qgs8VoxhodZCRErd3Sll35HrNTXaE0eGQ9RPqYdBSq74eXZByZAZCh8ME1Lsjmr9SeuJPDHa0CAHbIJAr1fYH7AZD','1837273313674648');
+console.log(await _x.getPages())*/

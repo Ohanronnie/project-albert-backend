@@ -9,42 +9,35 @@ import axios from "axios";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 import cheerio from "cheerio";
-export async function LoginDetails(req, res) {
+import fs from 'fs'
+export async function validatePage(req, res) {
+  const { token, accountId } = req.body;
+  const Facebook = new FacebookPost(token, accountId);
+  let response = Facebook.validatePage();
+  res.json(response);
+}
+export async function saveDetails(req, res) {
   try {
-    const { email, password } = req.body;
-    if (!email || !password)
-      return res.status(400).json({ message: "Fill all details please " });
-    const Facebook = new FacebookPost(email, password);
-    let cookie = await Facebook.getCookie();
-    if (!cookie) return res.status(400).json("Incorrect password");
-    let token = await Facebook.getToken();
-    if (!token) return res.status(400).json("Incorrect password or re-login");
-    let pages = await Facebook.getPages();
-    if (!pages)
-      return res.status(400).json("Error occurred somewhere! Re-login");
-    console.log(pages);
-    if (pages.page.length < 1)
-      return res.status(200).json({ message: "No Page Available" });
-    for (let i = 0; i < pages.page.length; i++) {
-      let _page = pages.page[i];
-      const page = new Page({
-        pageId: _page.id,
-        pageToken: _page.token,
-        pageCookie: pages.cookie,
-        pageName: _page.name,
-        ownerId: req.userId,
+    const { pageToken : pageToken,pageId: userId,contentType } = req.body;
+    const Facebook = new FacebookPost(pageToken, userId);
+    let response = await Facebook.validatePage();
+    if(!response.error){
+      await Page.create({
+        pageName: response.name,
+        pageToken: pageToken,
+        pageId: response.id,
+        contentType: contentType ? contentType : 'entertainment',
+        ownerId: req.userId
       });
-      await page.save();
+      return res.status(200).json({ pageToken, pageId:  response.id})
+    } else {
+      console.log(response.error)
+      return res.status(400).json('Invalid page token or id')
     }
-    return res.status(200).json({
-      page: pages.page.map((val) => ({
-        pageName: val.name,
-        pageId: val.id,
-        pageType: !!val.contentType,
-      })),
-    });
+
+    return res.status(200).json({ success: true });
   } catch (err) {
-    console.log(error);
+    console.log(err);
     res.status(400).json("Error occurred somewhere");
   }
 }
@@ -76,7 +69,8 @@ async function getNews(topic, country, language) {
       let kURL = headline.link;
       let response = await axios.get(kURL);
       let doc = new JSDOM(response.data, { url: kURL });
-
+      console.log(response.data);
+      fs.writeFileSync('doc.html', response.data)
       kURL = doc.window.document.querySelector("a").href;
       response = await axios.get(kURL);
       doc = new JSDOM(response.data, { url: kURL });
@@ -113,7 +107,6 @@ async function PostFromDB() {
       if (!Posts.findOne({ content: post.content })) {
         Posts.insert({ content: post.content });
         await fb.postToFacebook(
-          page.cookie,
           page.token,
           page.id,
           post.content,
@@ -146,7 +139,6 @@ export async function postContent(req, res) {
           if (!(await Post.findOne({ content: post.content }))) {
             await Post.create({ content: post.content });
             await fb.postToFacebook(
-              page.pageCookie,
               page.pageToken,
               page.pageId,
               post.content,
@@ -175,6 +167,7 @@ export async function getPages(req, res) {
             pageName: page.pageName,
             pageId: page.pageId,
             pageType: !!page.contentType,
+            pageToken: page.pageToken
           })),
         );
     }
@@ -186,7 +179,7 @@ export async function getPages(req, res) {
 export async function getSavedPages(req, res) {
   try {
     let pages = await Page.find({ ownerId: req.userId });
-    pages = pages.filter((e) => e.contentType);
+   // pages = pages.filter((e) => e.contentType);
     if (pages.length == 0) {
       return res.status(200).json([]);
     } else {

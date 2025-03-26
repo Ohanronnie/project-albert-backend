@@ -1,30 +1,25 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
-const postSchema = new Schema({
-  content: {
+const twitterSchema = new Schema({
+  twitterAccessToken: {
     type: String,
     required: true,
   },
-});
-const pageSchema = new Schema({
-  pageId: {
+  twitterRefreshToken: {
     type: String,
     required: true,
   },
-  pageToken: {
-    type: String,
-    required: true,
-  },
-  pageName: {
+  twitterName: {
     type: String,
     required: true,
   },
   contentType: String,
+  country: String,
+  language: String,
   ownerId: {
     type: mongoose.Types.ObjectId,
     required: true,
   },
 });
-export const Post = model("Post", postSchema);
-export const Page = model("Page", pageSchema);
+export const TwitterSchema = model('Twitter', twitterSchema);
