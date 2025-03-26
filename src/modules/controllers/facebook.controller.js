@@ -8,7 +8,7 @@ import { FacebookPost } from "./facebook.js";
 import axios from "axios";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import fs from 'fs'
 export async function validatePage(req, res) {
   const { token, accountId } = req.body;

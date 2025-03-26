@@ -2,7 +2,7 @@ import { TwitterApi } from 'twitter-api-v2';
 import { TwitterSchema } from '../../schemas/twitter.schema.js';
 import { scrapeGoogleNewsRSS } from '../../../common/utils/news.js';
 import axios from 'axios';
-import  cheerio  from 'cheerio';
+import  * as cheerio  from 'cheerio';
 import {JSDOM} from 'jsdom'
 import { Readability } from '@mozilla/readability';
 import { fetchRecentNews } from './news.js';
