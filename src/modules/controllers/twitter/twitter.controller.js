@@ -8,8 +8,8 @@ import { Readability } from '@mozilla/readability';
 import { fetchRecentNews } from './news.js';
 const CLIENT_ID = 'SnRmY2pMekxzRDlFM0psdHZ5dV86MTpjaQ';
 const CLIENT_SECRET = 'U6ylpB5-ygfS3Lx23IUu0mioOLNY-pPTqgEjxfXAwKSIdAQvG2';
-const _REDIRECT_URI = 'https://itoolsai-frontend.onrender.com/auth/twitter/callback';
-const REDIRECT_URI = 'http://localhost:5173/auth/twitter/callback';
+const REDIRECT_URI = 'https://itoolsai-frontend.onrender.com/auth/twitter/callback';
+const _REDIRECT_URI = 'http://localhost:5173/auth/twitter/callback';
 const _twitterClient = new TwitterApi({ clientId: CLIENT_ID, clientSecret: CLIENT_SECRET });
 const config = { appKey: "z7tkLFR0B8FzGtRi5OUzEM7Z1", appSecret: "LS4DSvaYr4NiIhdjcm2xjWBRmPggu3T0gBHHD92qdbOIP2gUN0" };
 
