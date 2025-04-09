@@ -8,53 +8,69 @@ import { Readability } from '@mozilla/readability';
 import { fetchRecentNews } from './news.js';
 const CLIENT_ID = 'SnRmY2pMekxzRDlFM0psdHZ5dV86MTpjaQ';
 const CLIENT_SECRET = 'U6ylpB5-ygfS3Lx23IUu0mioOLNY-pPTqgEjxfXAwKSIdAQvG2';
-const REDIRECT_URI = 'https://itoolsai-frontend.onrender.com/auth/twitter/callback';
+const _REDIRECT_URI = 'https://itoolsai-frontend.onrender.com/auth/twitter/callback';
+const REDIRECT_URI = 'http://localhost:5173/auth/twitter/callback';
+const _twitterClient = new TwitterApi({ clientId: CLIENT_ID, clientSecret: CLIENT_SECRET });
+const config = { appKey: "z7tkLFR0B8FzGtRi5OUzEM7Z1", appSecret: "LS4DSvaYr4NiIhdjcm2xjWBRmPggu3T0gBHHD92qdbOIP2gUN0" };
 
-const twitterClient = new TwitterApi({ clientId: CLIENT_ID, clientSecret: CLIENT_SECRET });
-
+const twitterClient = new TwitterApi({ appKey: "z7tkLFR0B8FzGtRi5OUzEM7Z1", appSecret: "LS4DSvaYr4NiIhdjcm2xjWBRmPggu3T0gBHHD92qdbOIP2gUN0" });
 // Temporary store for `codeVerifier` (Replace with a DB/Redis for production)
-const verifiers = new Map(); 
+const verifiers = new Map();  
 
 // 1️⃣ **Generate Twitter Auth URL**
-export function getAuthUrl(req, res) {
-  const { url, codeVerifier, state } = twitterClient.generateOAuth2AuthLink(REDIRECT_URI, {
+export async function getAuthUrl(req, res) {
+  const { _url, _codeVerifier, _state } = _twitterClient.generateOAuth2AuthLink(REDIRECT_URI, {
     scope: ['users.read', 'tweet.read', 'offline.access', 'tweet.write'],
   });
-
+  const { url, oauth_token, oauth_token_secret } = await twitterClient.generateAuthLink(REDIRECT_URI, {
+    scope: ['users.read', 'tweet.read', 'offline.access', 'tweet.write'],
+  });
   // Store `codeVerifier` temporarily (Use Redis/DB in production)
-  verifiers.set(state, codeVerifier);
+  verifiers.set(oauth_token, oauth_token_secret);
 
   console.log('Auth URL:', url);
-  res.json({ url, state });
+  res.json({ url, oauth_token });
 }
 
 // 2️⃣ **Handle Twitter Callback & Exchange Code for Token**
 export async function getUserDetails(req, res) {
-  const { code, state } = req.body;
-  console.log(code,state)
-  if (!code || !state || !verifiers.has(state)) {
+  const { oauth_token, oauth_verifier } = req.body;
+  // console.log(code,state)
+  if (!oauth_token || !oauth_verifier|| !verifiers.has(oauth_token)) {
     return res.status(400).json({ error: 'Invalid request or state mismatch' });
   }
-
-  try {
-    const codeVerifier = verifiers.get(state);
+ try {
+    const oauth_token_secret = verifiers.get(oauth_token);
    // verifiers.delete(state); // Remove it after use
 
-    console.log('Received Code:', code);
-    console.log('Stored Code Verifier:', codeVerifier);
+    console.log('Received Code:', oauth_token);
+    console.log('Stored Code Verifier:', oauth_token_secret);
 
     // Exchange code for access token
-    const { client: loggedClient, accessToken, refreshToken,...rest } =
-      await twitterClient.loginWithOAuth2({ code, codeVerifier, redirectUri: REDIRECT_URI });
-console.log(rest)
-    console.log('Access Token:', accessToken, refreshToken);
+    const client = new TwitterApi({
+      appKey: config.appKey,
+      appSecret: config.appSecret,
+      accessToken: oauth_token,
+      accessSecret: oauth_token_secret,
+    })
+    const { accessToken, accessSecret } =
+      await client.login(oauth_verifier);
+console.log('Access Token:', accessToken, accessSecret);
+    const loggedClient = new TwitterApi({
+      appKey: config.appKey,
+      appSecret: config.appSecret,
+      accessToken,
+      accessSecret,
+    });
     let user  = (await loggedClient.v2.me());
     let { id, name, username } = user.data;
-    console.log(req.userId);
+    console.log(req.userId, 
+      id, name, username, accessToken, accessSecret);
+    
     
     const twitteruser = new TwitterSchema({
       twitterAccessToken:  accessToken,
-      twitterRefreshToken: refreshToken,
+      twitterAccessSecret: accessSecret,
       twitterName: name,
       ownerId: req.userId
     });

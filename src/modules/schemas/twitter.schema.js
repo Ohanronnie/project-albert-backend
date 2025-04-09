@@ -6,7 +6,7 @@ const twitterSchema = new Schema({
     type: String,
     required: true,
   },
-  twitterRefreshToken: {
+  twitterAccessSecret: {
     type: String,
     required: true,
   },
