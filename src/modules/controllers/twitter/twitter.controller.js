@@ -44,9 +44,9 @@ export async function getUserDetails(req, res) {
     console.log('Stored Code Verifier:', codeVerifier);
 
     // Exchange code for access token
-    const { client: loggedClient, accessToken, refreshToken } =
+    const { client: loggedClient, accessToken, refreshToken,...rest } =
       await twitterClient.loginWithOAuth2({ code, codeVerifier, redirectUri: REDIRECT_URI });
-
+console.log(rest)
     console.log('Access Token:', accessToken, refreshToken);
     let user  = (await loggedClient.v2.me());
     let { id, name, username } = user.data;
